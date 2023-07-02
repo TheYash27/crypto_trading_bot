@@ -12,7 +12,9 @@ const tick = async () => {
     })
 
     const results = await Promise.all([
+        //Get the price feed of BTC/USD from the CoinGecko API....
         axios.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'),
+        //....and the price feed of USDT/USD from the CoinGecko API
         axios.get('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd')
     ])
     const marketPrice = results[0].data.bitcoin.usd / results[1].data.tether.usd
